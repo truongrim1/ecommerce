@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class OrderDetail extends Model
+<<<<<<< HEAD
 
 {
     use HasFactory;
@@ -15,4 +16,8 @@ class OrderDetail extends Model
     public function order(){
         return $this->belongsTo(\App\Models\Order::class, 'order_id');  
     }
+=======
+{
+    use HasFactory;
+>>>>>>> 667a3c5 (đẩy dl lên)
 }
