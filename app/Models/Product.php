@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class Product extends Model
 {
     use HasFactory;
+
+    public function brand(){
+        return $this->belongsTo(\App\Models\Brand::class, 'brand_id');
+    }
+
+    public function category(){
+        return $this->belongsTo(\App\Models\Category::class, 'category_id');
+    }
+
+    public function medias(){
+        return $this->hasMany(\App\Models\Media::class, 'product_id');
+    }
+
+    public function orderDetails(){
+        return $this->hasMany(\App\Models\OrderDetail::class, 'product_id');
+    }
 }

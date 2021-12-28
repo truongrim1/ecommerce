@@ -9,8 +9,7 @@ class Media extends Model
 {
     use HasFactory;
     protected $table = 'medias';
-
     public function product(){
-        return $this->belongsTo(\App\Models\Product::class, 'product_id');  
+        return $this->belongsTo(\App\Models\Product::class, 'product_id');
     }
 }
