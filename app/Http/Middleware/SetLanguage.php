@@ -9,9 +9,8 @@ use Illuminate\Foundation\Application;
 class SetLanguage
 {   
     private $app;
-
     public function __construct(Application $app) {
-     $this->app = $app;
+        $this->app = $app;
     }
     /**
      * Handle an incoming request.
@@ -25,5 +24,4 @@ class SetLanguage
         $this->app->setLocale('en');
         return $next($request);
     }
-   
 }
