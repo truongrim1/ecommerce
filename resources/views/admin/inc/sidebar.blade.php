@@ -29,9 +29,9 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('products.index') }}">
         <i class="menu-icon typcn typcn-th-large-outline"></i>
-        <span class="menu-title">Products</span>
+        <span class="menu-title">{{ trans('admin.product.title') }}</span>
         </a>
     </li>
     <li class="nav-item">
