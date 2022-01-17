@@ -11,9 +11,9 @@
     </li>
     <li class="nav-item nav-category">Menu</li>
     <li class="nav-item">
-        <a class="nav-link" href="">
+        <a class="nav-link" href="{{ route('brands.index') }}">
         <i class="menu-icon typcn typcn-document-text"></i>
-        <span class="menu-title">Brands</span>
+        <span class="menu-title">{{ trans('admin.brand.title') }}</span>
         </a>
     </li>
     <li class="nav-item">

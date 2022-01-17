@@ -5,5 +5,7 @@ return [
     'product.add.success' => 'Add product success',
     //customers
     'customer.title' => 'Customer',
+    //brands
+    'brand.title' => 'Brands',
 ];
 
