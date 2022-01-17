@@ -8,16 +8,8 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderDetailController;
 use App\Http\Controllers\BrandController;
 use App\Http\Requests\BrandRequest;
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+use App\Http\Controllers\CategoryController;
+
 Route::get('admin', function () {
     return view('admin.master');
 });
@@ -27,12 +19,14 @@ Route::prefix('admin')->group(function(){
     Route::resource('customers', CustomerController::class); 
     Route::resource('orders', OrderController::class);
     Route::resource('orderdetails', OrderDetailController::class);
+    Route::resource('categories', CategoryController::class); 
+    Route::resource('brands', BrandController::class);
 });
 
 Route::get('language', function(Request $request){
    session( ['locale' => $request->input('locale') ]);
    return redirect()->route('customers.index');
-    Route::resource('brands', BrandController::class);
+    
 });
 
 Route::get('language', function(Request $request){
@@ -43,8 +37,13 @@ Route::get('language', function(Request $request){
 Route::get('vi', function(){
     App::setLocale('vi');
 });
+  
+Route::get('language', function(Request $request){
 
-Route::get('alo', function () {
-    return "alo";
+    session( ['locale' => $request->input('locale') ]);
+    return redirect()->route('categories.index');
 });
+
+
+
 
