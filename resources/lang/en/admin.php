@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -7,5 +8,8 @@ return [
     'customer.title' => 'Customer',
     //brands
     'brand.title' => 'Brands',
+    //categories
+    'category.title' => 'Categories',
+
 ];
 
