@@ -1,6 +1,18 @@
 </html>
 <!DOCTYPE html>
 <html lang="en">
+  <style>
+  .form-create-app{
+      margin: auto;
+      padding-top: 20px;
+      box-shadow: 0 0 20px rgba(0,0,0,0.6);
+      border-radius: 4px;
+    } 
+    .card{
+        display: flex;
+        min-height:800px !important;
+    }
+  </style>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
