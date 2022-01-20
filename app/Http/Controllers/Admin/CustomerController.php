@@ -7,8 +7,6 @@ use App\Models\Customer;
 use App\Http\Requests\CustomerRequest;
 use App\Http\Controllers\Controller;
 
-
-
 class CustomerController extends Controller
 {
 
@@ -19,11 +17,8 @@ class CustomerController extends Controller
      */
     public function index()
     {
-
         $customers = Customer::all();
-
-        return view('admin.customers.index', array('customers'=>$customers));
-
+        return view('admin.customers.index', array('customers' => $customers));
     }
 
     /**
@@ -48,8 +43,6 @@ class CustomerController extends Controller
       Customer::create($request->all());
       session()->flash('succeskh', 'Thêm khách hàng thành công');
       return redirect()->route('customers.index');
-
-
     }
 
     /**
@@ -85,10 +78,6 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $input =  $request->all();
-
-        // $customer = Customer::find($id);
-
         $customer = Customer::find($id);
         $customer->update($request->all());
         return redirect()->route('customers.index')->with('success', 'Sửa khách hàng thành công');
@@ -103,7 +92,6 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         Customer::destroy($id);
-
         return redirect()->route('customers.index')->with('success', 'Xoá khách hàng thành công');
     }
 }

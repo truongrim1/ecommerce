@@ -1,8 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Product;
 
+use App\Models\Product;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -12,10 +12,12 @@ class HomeController extends Controller
      *
      * @return void
      */
+
     // public function __construct()
     // {
     //     // $this->middleware('auth');
     // }
+
 
     /**
      * Show the application dashboard.
@@ -26,6 +28,5 @@ class HomeController extends Controller
     {
         $products = Product::with('brand', 'category')->get();
         return view('web.home', array('products' => $products));
-
     }
 }

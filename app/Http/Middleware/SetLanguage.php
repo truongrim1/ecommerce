@@ -25,5 +25,4 @@ class SetLanguage
         $this->app->setLocale('en');
         return $next($request);
     }
-
 }
