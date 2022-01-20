@@ -17,11 +17,11 @@
     }
 </style>
 <div class="col-lg-4 form-create-app">
-    <form action="{{ route('products.store') }}" method="POST">
+    <form action="{{ route('admin.products.store') }}" method="POST">
         {{ csrf_field() }}
         <div class="form-group {{ $errors->has('name') ? 'has-error': ''}}">
             <label for="email">Tên sản phẩm:</label>
-            <input type="text" name="name" class="form-control"  id="email">
+            <input type="text" name="name" class="form-control"  id="email" value="{{ old('name')}}">
             @if($errors->has('name'))
             <span class="help-block">
                 <strong> {{ $errors->first('name') }}</strong>
@@ -30,7 +30,7 @@
         </div>
         <div class="form-group {{ $errors->has('price') ? 'has-error': ''}}">
             <label for="pwd">Giá sản phẩm:</label>
-            <input type="text" name="price" class="form-control" id="pwd">
+            <input type="text" name="price" class="form-control" id="pwd" value="{{ old('price')}}">
             @if($errors->has('price'))
             <span class="help-block">
                 <strong> {{ $errors->first('price') }}</strong>
@@ -39,7 +39,7 @@
         </div>
         <div class="form-group {{ $errors->has('discount') ? 'has-error': ''}}">
             <label for="pwd">Mã giảm giá:</label>
-            <input type="text" name="discount" class="form-control"  id="pwd">
+            <input type="text" name="discount" class="form-control"  id="pwd" value="{{ old('discount')}}">
             @if($errors->has('discount'))
             <span class="help-block">
                 <strong> {{ $errors->first('discount') }}</strong>

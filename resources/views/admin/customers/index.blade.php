@@ -7,7 +7,7 @@
         {{ session()->get('success') }}
     </div>
     @endif
-    
+
     @if(session()->has('succeskh'))
         <div class="alert alert-success">
         {{ session()->get('succeskh') }}
@@ -15,7 +15,7 @@
     @endif
 
 <h4 class="card-title">LIST OF CUSTOMERS</h4>
-    <a class="btn btn-primary" style = "margin-bottom:10px;" href="{{ route('customers.create') }}">Add</a>
+    <a class="btn btn-primary" style = "margin-bottom:10px;" href="{{ route('admin.customers.create') }}">Add</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -25,7 +25,7 @@
                 <th>Mật khẩu</th>
                 <th>Địa chỉ</th>
                 <th>Số điện thoại</th>
-               
+
                 <th>#</th>
                 <th>#</th>
             </tr>
@@ -39,9 +39,9 @@
                 <td>{{ $customer->pass }}</td>
                 <td>{{ $customer->address }}</td>
                 <td>{{ $customer->phone }}</td>
-                
+
                 <td><a class="btn btn-primary" href="{{ route('customers.edit', $customer->id) }}"> Edit </a></td>
-               
+
                 <td>
                     <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa sản phẩm này không?')">
                         {{ csrf_field() }}
