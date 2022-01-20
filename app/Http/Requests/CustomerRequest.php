@@ -29,6 +29,9 @@ class CustomerRequest extends FormRequest
             'pass'=>'required',
             'address'=>'required',
             'phone'=>'required',
+            'phone'=>'required | numeric',
+            
+            
             
         ];
     }
@@ -41,6 +44,10 @@ class CustomerRequest extends FormRequest
             'pass.required'=>'Pass bắt buộc phải có',
             'address.required'=>'Address bắt buộc phải có',
             'phone.required'=>'Phone bắt buộc phải có',
+            'phone.numeric'=>'ĐỊT mẹ mày nhập số vào',
+            
+            
+            
         ];
 
     }

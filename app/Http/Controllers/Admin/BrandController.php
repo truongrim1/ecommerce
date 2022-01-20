@@ -1,29 +1,27 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Requests\CategoryRequest;
+use App\Models\Brand;
+use Session;
+use App\Http\Requests\BrandRequest;
+use resource\views\brands\create;
+use resource\views\brands\index;
+use resource\views\brands\edit;
 use Illuminate\Http\Request;
-use App\Models\Category;
+use Illuminate\Support\Facades\Validator;
 
-
-
-class CategoryController extends Controller
+class BrandController extends Controller
 {
-
-   
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    
     public function index()
     {
-        
-        $categories = Category::all();
-        return view('admin.categories.index', array('categories' => $categories)); 
-        // return view('admin.categories.index');
+        $brands = Brand::all();
+        return view('brands.index', array('brands' => $brands));
     }
 
     /**
@@ -33,8 +31,8 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.categories.create');
-        
+        $brands = Brand::all();
+        return view('brands.create', array('brands' => $brands));
     }
 
     /**
@@ -43,16 +41,10 @@ class CategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CategoryRequest $request) 
+    public function store(BrandRequest $request)
     {
-        
-        // dd($request);
-        // Category::create($request->all());
-
-        Category::create($request->all());
-        return redirect()->route('categories.index')->with('success', 'Thêm Thành Công');
-        
-
+        Brand::create($request->all());
+        return redirect()->route('brands.index')->with('message', 'Thêm Brand thành công');
     }
 
     /**
@@ -63,9 +55,8 @@ class CategoryController extends Controller
      */
     public function show($id)
     {
-        // return Category::find($id);
-        $categories = Category::find($id);
-        return view ('admin.categories.show', array('categories' => $categories));
+        $brand = Brand::where('id', '=', $id)->select('*')->first();
+        return view('brands.show', compact('brand'));     
     }
 
     /**
@@ -76,9 +67,8 @@ class CategoryController extends Controller
      */
     public function edit($id)
     {
-        $categories = Category::find($id);
-        return view('admin.categories.edit',array('categories' => $categories));
-    
+        $brand = Brand::findOrFail($id);       
+        return view('brands.edit', compact('brand'));
     }
 
     /**
@@ -90,9 +80,13 @@ class CategoryController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $categories = Category::find($id);
-        $categories->update($request->all());
-        return redirect()->route('categories.index')->with('success', 'Sửa Thành Công');
+        $brand = Brand::find($id);
+        $brand->name = $request->name;
+        $brand->desc = $request->desc;
+
+        $brand->save();
+
+        return redirect()->route('brands.index')->with('message', 'Sửa brands thành công');
     }
 
     /**
@@ -103,7 +97,7 @@ class CategoryController extends Controller
      */
     public function destroy($id)
     {
-        Category::destroy($id);
-        return redirect()->route('categories.index')->with('success', 'Xóa Thành Công');
+        Brand::destroy($id);
+        return redirect()->route('brands.index')->with('message', 'Xoá brands thành công');
     }
 }

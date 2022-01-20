@@ -1,28 +1,29 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\CategoryRequest;
 use Illuminate\Http\Request;
-use App\Models\Customer;
-use App\Http\Requests\CustomerRequest;
+use App\Models\Category;
 
 
 
-class CustomerController extends Controller
-{ 
-    
+class CategoryController extends Controller
+{
+
+   
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
+    
     public function index()
     {
-       
-        $customers = Customer::all();
-
-        return view('admin.customers.index', array('customers'=>$customers));
-
+        
+        $categories = Category::all();
+        return view('admin.categories.index', array('categories' => $categories)); 
+        // return view('admin.categories.index');
     }
 
     /**
@@ -32,7 +33,8 @@ class CustomerController extends Controller
      */
     public function create()
     {
-        return view('admin.customers.create');
+        return view('admin.categories.create');
+        
     }
 
     /**
@@ -41,13 +43,15 @@ class CustomerController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(CustomerRequest $request)
+    public function store(CategoryRequest $request) 
     {
+        
+        // dd($request);
+        // Category::create($request->all());
 
-      Customer::create($request->all());
-      session()->flash('succeskh', 'Thêm khách hàng thành công');
-      return redirect()->route('customers.index');
-      
+        Category::create($request->all());
+        return redirect()->route('categories.index')->with('success', 'Thêm Thành Công');
+        
 
     }
 
@@ -59,9 +63,9 @@ class CustomerController extends Controller
      */
     public function show($id)
     {
-        
-        return customer::find($id);
-        return view('admin.customers.show', array('customer'=>$customer));
+        // return Category::find($id);
+        $categories = Category::find($id);
+        return view ('admin.categories.show', array('categories' => $categories));
     }
 
     /**
@@ -72,8 +76,9 @@ class CustomerController extends Controller
      */
     public function edit($id)
     {
-        $customer = Customer::find($id);
-        return view('admin.customers.edit', array('customer'=>$customer));
+        $categories = Category::find($id);
+        return view('admin.categories.edit',array('categories' => $categories));
+    
     }
 
     /**
@@ -85,13 +90,9 @@ class CustomerController extends Controller
      */
     public function update(Request $request, $id)
     {
-        // $input =  $request->all();
-
-        // $customer = Customer::find($id);
-
-        $customer = Customer::find($id);
-        $customer->update($request->all());
-        return redirect()->route('customers.index')->with('success', 'Sửa khách hàng thành công');
+        $categories = Category::find($id);
+        $categories->update($request->all());
+        return redirect()->route('categories.index')->with('success', 'Sửa Thành Công');
     }
 
     /**
@@ -102,8 +103,7 @@ class CustomerController extends Controller
      */
     public function destroy($id)
     {
-        Customer::destroy($id);
-        
-        return redirect()->route('customers.index')->with('success', 'Xoá khách hàng thành công');
+        Category::destroy($id);
+        return redirect()->route('categories.index')->with('success', 'Xóa Thành Công');
     }
 }

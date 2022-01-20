@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Requests\ProductRequest;
 use App\Models\Brand;
-use Session;
-use App\Http\Requests\BrandRequest;
-use resource\views\brands\create;
-use resource\views\brands\index;
-use resource\views\brands\edit;
+use App\Models\Category;
+use App\Models\Product;
+use Illuminate\Auth\Events\Validated;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Validator;
 
-class BrandController extends Controller
+class ProductController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,8 +20,8 @@ class BrandController extends Controller
      */
     public function index()
     {
-        $brands = Brand::all();
-        return view('brands.index', array('brands' => $brands));
+        $products = Product::with('brand', 'category')->get();
+        return view('admin.products.index', array('products' => $products));
     }
 
     /**
@@ -32,7 +32,8 @@ class BrandController extends Controller
     public function create()
     {
         $brands = Brand::all();
-        return view('brands.create', array('brands' => $brands));
+        $categories = Category::all();
+        return view('admin.products.create', array('brands' => $brands, 'categories' => $categories));
     }
 
     /**
@@ -41,10 +42,10 @@ class BrandController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(BrandRequest $request)
+    public function store(ProductRequest $request)
     {
-        Brand::create($request->all());
-        return redirect()->route('brands.index')->with('message', 'Thêm Brand thành công');
+        Product::create($request->all());
+        return redirect()->route('products.index')->with('message', trans('admin.product.add.success'));
     }
 
     /**
@@ -55,8 +56,8 @@ class BrandController extends Controller
      */
     public function show($id)
     {
-        $brand = Brand::where('id', '=', $id)->select('*')->first();
-        return view('brands.show', compact('brand'));     
+        $product = Product::find($id);
+        return view('admin.products.show', array('product' => $product));
     }
 
     /**
@@ -67,8 +68,10 @@ class BrandController extends Controller
      */
     public function edit($id)
     {
-        $brand = Brand::findOrFail($id);       
-        return view('brands.edit', compact('brand'));
+        $brands = Brand::all();
+        $categories = Category::all();
+        $product = Product::find($id);
+        return view('admin.products.edit', array('brands' => $brands, 'categories' => $categories, 'product' => $product));
     }
 
     /**
@@ -80,13 +83,9 @@ class BrandController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $brand = Brand::find($id);
-        $brand->name = $request->name;
-        $brand->desc = $request->desc;
-
-        $brand->save();
-
-        return redirect()->route('brands.index')->with('message', 'Sửa brands thành công');
+        $product = Product::find($id);
+        $product->update($request->all());
+        return redirect()->route('products.index')->with('message', 'Sửa thông tin sản phẩm thành công!');
     }
 
     /**
@@ -97,7 +96,7 @@ class BrandController extends Controller
      */
     public function destroy($id)
     {
-        Brand::destroy($id);
-        return redirect()->route('brands.index')->with('message', 'Xoá brands thành công');
+        Product::destroy($id);
+        return redirect()->route('products.index')->with('message', 'Xóa sản phẩm thành công!');
     }
 }

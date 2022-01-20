@@ -1,14 +1,14 @@
 <?php
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Admin\ProductController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CustomerController;
+use App\Http\Controllers\Admin\CustomerController;
 use Illuminate\Foundation\Application;
 use Illuminate\Http\Request;
-use App\Http\Controllers\OrderController;
-use App\Http\Controllers\OrderDetailController;
-use App\Http\Controllers\BrandController;
+use App\Http\Controllers\Admin\OrderController;
+use App\Http\Controllers\Admin\OrderDetailController;
+use App\Http\Controllers\Admin\BrandController;
 use App\Http\Requests\BrandRequest;
-use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\Admin\CategoryController;
 
 Route::get('admin', function () {
     return view('admin.master');
@@ -47,3 +47,7 @@ Route::get('language', function(Request $request){
 
 
 
+
+Auth::routes();
+
+Route::get('/home', [HomeController::class, 'index'])->name('home');
