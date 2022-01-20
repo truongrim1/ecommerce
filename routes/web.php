@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -11,6 +12,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderDetailController;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController as WebProductController;
 
 /**
  * Phần admin
@@ -48,9 +50,10 @@ Route::get('language', function(Request $request){
     return redirect()->route('categories.index');
 });
 
-
 Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
+
+Route::get('product-detail/{id}', [WebProductController::class, 'show'])->name('products.show');
 
 

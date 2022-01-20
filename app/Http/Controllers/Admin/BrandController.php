@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Models\Brand;
-use Session;
 use App\Http\Requests\BrandRequest;
 use App\Http\Controllers\Controller;
 use resource\views\brands\create;
 use resource\views\brands\index;
 use resource\views\brands\edit;
+
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Validator;
 
 class BrandController extends Controller
 {
