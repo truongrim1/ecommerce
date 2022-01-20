@@ -17,7 +17,7 @@
     }
 </style>
 <div class="col-lg-4 form-create-app">
-    <form action="{{ route('products.update', $product->id) }}" method="POST">
+    <form action="{{ route('admin.products.update', $product->id) }}" method="POST">
     {{ csrf_field() }}
     {{ method_field('put') }}
     <div class="form-group {{ $errors->has('name') ? 'has-error': ''}}">

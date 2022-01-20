@@ -13,7 +13,7 @@
             {{ session('message') }}
         </div>
     @endif
-    <a class="btn btn-primary" style = "margin-bottom:10px;" href="{{ route('products.create') }}">Thêm</a>
+    <a class="btn btn-primary" style = "margin-bottom:10px;" href="{{ route('admin.products.create') }}">Thêm</a>
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -32,15 +32,15 @@
         @foreach($products as $product)
             <tr>
                 <th scope="row">{{ $product->id }}</th>
-                <td><a href="{{ route('products.show', $product->id) }}"> {{ $product->name }} </a></td>
+                <td><a href="{{ route('admin.products.show', $product->id) }}"> {{ $product->name }} </a></td>
                 <td>{{number_format($product->price, 2) }}Đ</td>
                 <td>{{ $product->view }}</td>
                 <td>{{ $product->discount }}</td>
                 <td>{{ $product->brand->name }}</td>
                 <td>{{ $product->category->name }}</td>
-                <td><a class="btn btn-primary" href="{{ route('products.edit', $product->id) }}"> Edit </a></td>
+                <td><a class="btn btn-primary" href="{{ route('admin.products.edit', $product->id) }}"> Edit </a></td>
                 <td>
-                    <form class="form-delete" action="{{ route('products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa sản phẩm này không?')">
+                    <form class="form-delete" action="{{ route('admin.products.destroy', $product->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa sản phẩm này không?')">
                         {{ csrf_field() }}
                         {{ method_field('delete') }}
                         <button class="btn btn-primary" type="submit">Delete</button>

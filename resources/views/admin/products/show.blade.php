@@ -24,7 +24,7 @@
     <p>Loại sản phẩm: <span class="product-info">{{ $product->category->name }}</span></p>
     <p>Nhãn hiệu: <span class="product-info">{{ $product->brand->name }}</span></p>
     <p>Ngày tạo: <span class="product-info">{{$product->created_at}}</span></p>
-    <a class="btn btn-primary" style="width:100px; margin-bottom:10px" href="{{ route('products.edit', $product->id) }}">Edit</a>
-    <a class="btn btn-primary" style="width:100px; margin-bottom:10px" href="{{ route('products.index') }}">Quay lại</a>
+    <a class="btn btn-primary" style="width:100px; margin-bottom:10px" href="{{ route('admin.products.edit', $product->id) }}">Edit</a>
+    <a class="btn btn-primary" style="width:100px; margin-bottom:10px" href="{{ route('admin.products.index') }}">Quay lại</a>
 </div>
 @endsection

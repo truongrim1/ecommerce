@@ -25,8 +25,8 @@ class ProductRequest extends FormRequest
     {
         return [
             'name' => 'required | min:10 | max:100',
-            'price' => 'required | alpha_num | between:0,50000000',
-            'discount' => 'required | alpha_num | between:1,100',
+            'price' => 'required | numeric | min:0 | max:50000000',
+            'discount' => 'required | numeric | min:1 | max:100',
         ];
     }
 
@@ -36,11 +36,13 @@ class ProductRequest extends FormRequest
             'name.min' => 'Tên phải 10 chữ cái trở lên!',
             'name.max' => 'Tên tối đa 100 chữ cái!',
             'price.required' => 'Giá không được để trống!',
-            'price.alpha_num' => 'Vui lòng nhập số!',
-            'price.between' => 'Giá nằm trong khoảng 0 đến 50.000.000',
+            'price.numeric' => 'Vui lòng nhập số!',
+            'price.min' => 'Vui lòng nhập giá lớn hơn 0',
+            'price.max' => 'Vui lòng nhập giá bé hơn 50.000.000',
             'discount.required' => 'Vui lòng không để trống!',
-            'discount.alpha_num' => 'Vui lòng nhập số!',
-            'discount.between' => 'Giá nằm trong khoảng 1 đến 100',
+            'discount.numeric' => 'Vui lòng nhập số!',
+            'discount.min' => 'Vui lòng nhập mã giảm giá lớn hơn 0',
+            'discount.max' => 'Vui lòng nhập mã giảm giá bé hơn 100',
         ];
     }
 }
