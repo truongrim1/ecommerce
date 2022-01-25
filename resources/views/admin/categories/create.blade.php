@@ -12,7 +12,7 @@
         border-color: red;
     }
 </style>
-<form action="{{ route('categories.store') }}" method="POST">
+<form action="{{ route('admin.categories.store') }}" method="POST">
     {{ csrf_field() }}
     <div class="mb-3 {{ $errors->has('name') ? 'has-error' : ''}}" >
         <label for="exampleInputEmail1" class="form-label">Categories Name</label>

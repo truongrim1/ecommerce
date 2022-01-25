@@ -42,7 +42,7 @@ class CustomerController extends Controller
 
       Customer::create($request->all());
       session()->flash('succeskh', 'Thêm khách hàng thành công');
-      return redirect()->route('customers.index');
+      return redirect()->route('admin.customers.index');
     }
 
     /**
@@ -80,7 +80,7 @@ class CustomerController extends Controller
     {
         $customer = Customer::find($id);
         $customer->update($request->all());
-        return redirect()->route('customers.index')->with('success', 'Sửa khách hàng thành công');
+        return redirect()->route('admin.customers.index')->with('success', 'Sửa khách hàng thành công');
     }
 
     /**
@@ -92,6 +92,6 @@ class CustomerController extends Controller
     public function destroy($id)
     {
         Customer::destroy($id);
-        return redirect()->route('customers.index')->with('success', 'Xoá khách hàng thành công');
+        return redirect()->route('admin.customers.index')->with('success', 'Xoá khách hàng thành công');
     }
 }

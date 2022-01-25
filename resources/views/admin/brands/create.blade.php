@@ -11,7 +11,7 @@
         border-color: red;
     }
 </style>
-<form action="{{ route('brands.store') }}" method="POST" >
+<form action="{{ route('admin.brands.store') }}" method="POST" >
     @method('POST')
     @csrf
     <div class="form-group {{ $errors->has('name') ? 'has-errors': '' }}">
@@ -25,12 +25,12 @@
     </div>
     <div class="form-group {{ $errors->has('desc') ? 'has-errors': '' }}">
         <label for="desc">Desc</label>
-        <input type="text" name="desc" class="form-control" placehoder="Enter desc" id="desc" value="{{ old('desc') }}">    
+        <input type="text" name="desc" class="form-control" placehoder="Enter desc" id="desc" value="{{ old('desc') }}">
         @if($errors->has('desc'))
             <span class="help-block">
                 <strong>{{ $errors->first('desc') }}</strong>
             </span>
-        @endif      
+        @endif
     </div>
     <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -46,7 +46,7 @@ class OrderDetailController extends Controller
             'product_id' => $request['txtidpd'],
             'order_id' => $request['txtodid']
         ]);
-        return redirect()->route('orderdetails.index')->with('message', 'Thên hóa thành công');
+        return redirect()->route('admin.orderdetails.index')->with('message', 'Thên hóa thành công');
     }
 
     /**
@@ -87,7 +87,7 @@ class OrderDetailController extends Controller
             'product_id' => $request['txtidpd'],
             'order_id' => $request['txtodid']
         ]);
-        return redirect()->route('orderdetails.index')->with('message', 'Thên hóa thành công');
+        return redirect()->route('admin.orderdetails.index')->with('message', 'Thên hóa thành công');
     }
 
     /**
@@ -99,6 +99,6 @@ class OrderDetailController extends Controller
     public function destroy($id)
     {
         OrderDetail::destroy($id);
-        return redirect()->route('orderdetails.index')->with('message', 'Xóa hóa đơn hành công');
+        return redirect()->route('admin.orderdetails.index')->with('message', 'Xóa hóa đơn hành công');
     }
 }

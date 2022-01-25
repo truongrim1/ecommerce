@@ -51,7 +51,7 @@ class CategoryController extends Controller
         // Category::create($request->all());
 
         Category::create($request->all());
-        return redirect()->route('categories.index')->with('success', 'Thêm Thành Công');
+        return redirect()->route('admin.categories.index')->with('success', 'Thêm Thành Công');
 
 
     }
@@ -93,7 +93,7 @@ class CategoryController extends Controller
     {
         $categories = Category::find($id);
         $categories->update($request->all());
-        return redirect()->route('categories.index')->with('success', 'Sửa Thành Công');
+        return redirect()->route('admin.categories.index')->with('success', 'Sửa Thành Công');
     }
 
     /**
@@ -105,6 +105,6 @@ class CategoryController extends Controller
     public function destroy($id)
     {
         Category::destroy($id);
-        return redirect()->route('categories.index')->with('success', 'Xóa Thành Công');
+        return redirect()->route('admin.categories.index')->with('success', 'Xóa Thành Công');
     }
 }

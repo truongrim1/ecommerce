@@ -4,5 +4,5 @@
 </div>
 <!-- Logo -->
 <div class="logo">
-    <a href="index.php"><img src="{{ asset('../../assets/img/core-img/logo.png') }}" alt=""></a>
+    <a href="{{ route('home') }}"><img src="{{ asset('../../assets/img/core-img/logo.png') }}" alt=""></a>
 </div>

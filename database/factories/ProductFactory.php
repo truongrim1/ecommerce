@@ -21,6 +21,7 @@ class ProductFactory extends Factory
             'discount'=>$this->faker->randomDigit(),
             'brand_id'=>1,
             'category_id'=>1,
+            'slug'=>$this->faker->slug(),
         ];
     }
 }

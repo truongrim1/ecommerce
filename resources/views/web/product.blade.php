@@ -36,23 +36,23 @@
                                 </ol>
                                 <div class="carousel-inner">
                                     <div class="carousel-item active">
-                                        <a class="gallery_img" href="../../assets/img/product-img/pro-big-1.jpg">
-                                            <img class="d-block w-100" src="../../assets/img/product-img/pro-big-1.jpg" alt="First slide">
+                                        <a class="gallery_img" href="{{ asset('../../assets/img/product-img/pro-big-1.jpg') }}">
+                                            <img class="d-block w-100" src="{{ asset('../../assets/img/product-img/pro-big-1.jpg') }}" alt="First slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="../../assets/img/product-img/pro-big-2.jpg">
-                                            <img class="d-block w-100" src="../../assets/img/product-img/pro-big-2.jpg" alt="Second slide">
+                                        <a class="gallery_img" href="{{ asset('../../assets/img/product-img/pro-big-2.jpg') }}">
+                                            <img class="d-block w-100" src="{{ asset('../../assets/img/product-img/pro-big-2.jpg') }}" alt="Second slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="../../assets/img/product-img/pro-big-3.jpg">
-                                            <img class="d-block w-100" src="../../assets/img/product-img/pro-big-3.jpg" alt="Third slide">
+                                        <a class="gallery_img" href="{{ asset('../../assets/img/product-img/pro-big-3.jpg') }}">
+                                            <img class="d-block w-100" src="{{ asset('../../assets/img/product-img/pro-big-3.jpg') }}" alt="Third slide">
                                         </a>
                                     </div>
                                     <div class="carousel-item">
-                                        <a class="gallery_img" href="../../assets/img/product-img/pro-big-4.jpg">
-                                            <img class="d-block w-100" src="../../assets/img/product-img/pro-big-4.jpg" alt="Fourth slide">
+                                        <a class="gallery_img" href="{{ asset('../../assets/img/product-img/pro-big-4.jpg') }}">
+                                            <img class="d-block w-100" src="{{ asset('../../assets/img/product-img/pro-big-4.jpg') }}" alt="Fourth slide">
                                         </a>
                                     </div>
                                 </div>
@@ -64,7 +64,7 @@
                             <!-- Product Meta Data -->
                             <div class="product-meta-data">
                                 <div class="line"></div>
-                                <p class="product-price">{{ $product->price }}</p>
+                                <p class="product-price">{{ number_format($product->price,2) }}Đ</p>
                                 <a href="product-details.php">
                                     <h6>{{ $product->name }}</h6>
                                 </a>

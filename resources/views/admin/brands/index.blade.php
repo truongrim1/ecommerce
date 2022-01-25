@@ -108,7 +108,7 @@
         @endif
     </div>
     <h4 class="card-title">Danh sách Brands</h4>
-    <a class="btn btn-primary" style="margin-bottom:10px;" href="{{ route('brands.create') }}">Thêm</a>
+    <a class="btn btn-primary" style="margin-bottom:10px;" href="{{ route('admin.brands.create') }}">Thêm</a>
     @if(session()->get('errors'))
         {{ session()->get('errors')->first }}
     @endif
@@ -126,14 +126,14 @@
             @foreach($brands as $brand)
             <tr>
                 <th scope="row">{{ $brand->id }}</th>
-                    <td><a href="{{ route('brands.show', $brand->id) }}">{{ $brand->name }}</a></td>
+                    <td><a href="{{ route('admin.brands.show', $brand->id) }}">{{ $brand->name }}</a></td>
                     <td>{{ $brand->desc }}</td>
                     <td>
                         <button type="submit" class="btn btn-outline-primary">
-                            <a href="{{ route('brands.edit', $brand->id) }}">Edit</a></td>
+                            <a href="{{ route('admin.brands.edit', $brand->id) }}">Edit</a></td>
                         </button>
                     <td>
-                        <form action="{{ route('brands.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xoá sản phẩm này')">
+                        <form action="{{ route('admin.brands.destroy', $brand->id) }}" method="POST" onsubmit="return confirm('Bạn có chắc muốn xoá sản phẩm này')">
                             {{ csrf_field() }}
                             {{ method_field('delete') }}
                             <button type="submit" class="btn btn-outline-primary">Delete</button>

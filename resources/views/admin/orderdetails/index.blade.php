@@ -27,7 +27,7 @@
                 <button type="submit"> Xóa</button>
             </form>
           </td>
-        </tr> 
+        </tr>
         @endforeach
     </tbody>
   </table><br>

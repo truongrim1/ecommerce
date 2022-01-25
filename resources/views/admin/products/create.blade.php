@@ -21,11 +21,7 @@
         {{ csrf_field() }}
         <div class="form-group {{ $errors->has('name') ? 'has-error': ''}}">
             <label for="email">Tên sản phẩm:</label>
-<<<<<<< HEAD
             <input type="text" name="name" class="form-control"  id="email" value="{{ old('name')}}">
-=======
-            <input type="text" name="name" class="form-control"  id="email" value="{{ old('name') }}">
->>>>>>> c8ecdd7 (web_product)
             @if($errors->has('name'))
             <span class="help-block">
                 <strong> {{ $errors->first('name') }}</strong>
@@ -34,11 +30,7 @@
         </div>
         <div class="form-group {{ $errors->has('price') ? 'has-error': ''}}">
             <label for="pwd">Giá sản phẩm:</label>
-<<<<<<< HEAD
             <input type="text" name="price" class="form-control" id="pwd" value="{{ old('price')}}">
-=======
-            <input type="text" name="price" class="form-control" id="pwd" value="{{ old('price') }}">
->>>>>>> c8ecdd7 (web_product)
             @if($errors->has('price'))
             <span class="help-block">
                 <strong> {{ $errors->first('price') }}</strong>
@@ -47,11 +39,7 @@
         </div>
         <div class="form-group {{ $errors->has('discount') ? 'has-error': ''}}">
             <label for="pwd">Mã giảm giá:</label>
-<<<<<<< HEAD
             <input type="text" name="discount" class="form-control"  id="pwd" value="{{ old('discount')}}">
-=======
-            <input type="text" name="discount" class="form-control"  id="pwd" value="{{ old('discount') }}">
->>>>>>> c8ecdd7 (web_product)
             @if($errors->has('discount'))
             <span class="help-block">
                 <strong> {{ $errors->first('discount') }}</strong>
@@ -75,7 +63,7 @@
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Thêm mới</button>
-        <a class="btn btn-primary" href="{{ route('products.index') }}">Quay lại</a>
+        <a class="btn btn-primary" href="{{ route('admin.products.index') }}">Quay lại</a>
     </form>
 </div>
 @endsection
