@@ -2,17 +2,19 @@
 @section('title', "List Order");
 @section('content')
 
-@if(session()->get('message'))
-  <span>{{ Session()->get('message') }}</span>
+@if(session('message'))
+<div class="alert alert-success" role="alert">
+    {{ session()->get('success') }}
+    {{ session('message') }}
+</div>
 @endif
-
 
 <div class="card-body">
  <h4 class="card-title">DANH SÁCH ĐƠN HÀNG</h4>
  <br>
 <form action="" method="get" class="form-inline">
   <div class="form-group">
-    Từ &nbsp;<input type="date" name="txtdatefrom" value=""> &nbsp;
+    Từ &nbsp;<input type="date" name="txtdatefrom" id="txtdatefrom" value=""> &nbsp;
     Đến &nbsp;<input type="date" name="txtdateto" value="{{ 'Y-m-d' }}"> &nbsp;
   </div>&nbsp;
   <button type="submit" class="btn btn-primary">tim</button>
@@ -32,12 +34,12 @@
         @foreach($orders as $order)
         <tr>
             <td scope="row"> {{ $order->id }} </td>
-            <td> <a href="{{ route( 'orders.show', $order->id ) }}"> {{ $order->name }} </a> </td> 
+            <td> <a href="{{ route('admin.orders.show', $order->id) }}"> {{ $order->name }} </a> </td> 
             <!-- <td style="width: 100px"> {{ $order->desc }} </td> -->
             <td> {{ $order->status == 0 ? "chưa thanh toán" : "Đã thanh toán" }} </td>
             <td> {{ $order->customer->fullName }} </td>
             <td>
-              <form action="{{ route('orders.update', $order->id) }}" method="post">
+              <form action="{{ route('admin.orders.update', $order->id) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('put') }}
                 @if($order->status == 0)
@@ -49,7 +51,7 @@
                 <button type="submit">Cập nhật</button>
               </form>
 
-              <form action="{{ route( 'orders.destroy', $order->id ) }}" method="post">
+              <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" onsubmit="return confirm('Bạn có chắc muốn xoá hóa đơn')">
                   {{ csrf_field() }}
                   {{ method_field('delete') }}
                   <button type="submit"> Xóa</button>

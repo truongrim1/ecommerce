@@ -18,7 +18,7 @@ class OrderController extends Controller
      */
     public function index()
     {
-        $data['orders'] = Order::with('customer')->Searchdate()->paginate(3);
+        $data['orders'] = Order::with('customer')->Searchdate()->paginate(5);
         return view('admin.orders.index', $data);
     }
 
@@ -39,24 +39,15 @@ class OrderController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(OrderRequest $request)
     {
-        $validate = Validator::make( $request->all(),[
-            'txtname' => 'required|min: 5|max: 25',
-            'txtnote' => 'required|max: 255'
-        ]);
-
-        if($validate->fails()){
-            return redirect()->route('orders.create')->withErrors($validate)->withInput($request->input());
-        }
-
         Order::create([
             'name' => $request['txtname'],
             'desc' => $request['txtnote'],
             'status' => $request['txtstatus'],
             'customer_id' => $request['txtcustomer']
         ]);
-        return redirect()->route('orders.index')->with('message', 'Thên hóa thành công');
+        return redirect()->route('admin.orders.index')->with('message', 'Thên hóa thành công');
     }
 
     /**
@@ -67,8 +58,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        // $orders = Order::find($id)->with('customer')->get();
-        return redirect()->route('orderdetails.show', $id );
+        $orders = Order::find($id)->with('customer')->get();
+        return redirect()->route('admin.orderdetails.show', $id );
     }
 
     /**
@@ -97,7 +88,7 @@ class OrderController extends Controller
         $order->update([
             'status' => $request['txtstatus']
         ]);
-        return redirect()->route('orders.index')->with('message', 'Cập nhật hóa thành công');
+        return redirect()->route('admin.orders.index')->with('message', 'Cập nhật hóa đơn thành công');
     }
 
     /**

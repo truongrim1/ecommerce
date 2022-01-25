@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderDetailController;
 
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\OrderController as WebOrderController;
 use App\Http\Controllers\ProductController as WebProductController;
 
 /**
@@ -56,4 +57,6 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 
 Route::get('product-detail/{id}', [WebProductController::class, 'show'])->name('products.show');
 
+Route::get('orders', [WebOrderController::class, 'index'])->name('orders.index');
 
+Route::post('order', [WebOrderController::class, 'order'])->name('product.order');
