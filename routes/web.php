@@ -12,6 +12,7 @@ use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderDetailController;
 use App\Http\Controllers\OrderController as WebOrderController;
+use App\Http\Controllers\CartController;
 use App\Http\Controllers\ProductController as WebProductController;
 
 /**
@@ -57,5 +58,7 @@ Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('product-detail/{slug}.html', [WebProductController::class, 'productDetail'])->name('product.detail');
 
 Route::get('orders', [WebOrderController::class, 'index'])->name('orders.index');
+
+Route::get('cart', [CartController::class, 'index'])->name('cart');
 
 Route::post('order', [WebOrderController::class, 'order'])->name('product.order');

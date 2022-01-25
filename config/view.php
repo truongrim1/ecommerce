@@ -1,3 +1,4 @@
+
 <?php
 
 return [
@@ -32,5 +33,4 @@ return [
         'VIEW_COMPILED_PATH',
         realpath(storage_path('framework/views'))
     ),
-
 ];

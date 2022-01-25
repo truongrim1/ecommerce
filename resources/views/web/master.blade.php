@@ -39,6 +39,7 @@
         @yield('content')
     </div>
     <!-- ##### Newsletter Area Start ##### -->
+    @yield('scripts')
     <section class="newsletter-area section-padding-100-0">
         <div class="container">
             <div class="row align-items-center">
@@ -61,10 +62,13 @@
             </div>
         </div>
     </section>
+
+
     <!-- ##### Newsletter Area End ##### -->
 
     <!-- ##### Footer Area Start ##### -->
     @include('web.inc.footer')
+    
     <!-- ##### Footer Area End ##### -->
 
     <!-- ##### jQuery (Necessary for All JavaScript Plugins) ##### -->
