@@ -15,13 +15,15 @@ class OrderController extends Controller
     {
         $orderDetail = array(
             'id' => $request->id,
-            'quantity' => $request->quantity
+            'name' => $request->name,
+            'price' => $request->price,
+            'quantity' => $request->quantity    
         );
 
         $cart = session()->get('cart');
         if(!isset($cart)) $cart = array();
         $cart[$request->id] = $orderDetail;
         session()->put('cart', $cart);
-        return redirect->route('checkout')->with('message', 'Đã thêm giỏ hàng thành công');
+        return redirect()->route('cart')->with('message', 'Đã thêm giỏ hàng thành công');
     }
 }

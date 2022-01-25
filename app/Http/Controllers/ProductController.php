@@ -16,6 +16,7 @@ class ProductController extends Controller
      */
     public function index()
     {
+        $products = Product::all();
         return view('web.product');
     }
 
@@ -32,4 +33,5 @@ class ProductController extends Controller
         $product = Product::findOrFail($id);
         return view('web.product', array('product' => $product));
     }
+
 }

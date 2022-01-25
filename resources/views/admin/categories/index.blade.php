@@ -15,7 +15,6 @@
     @endif
     <h4 class="card-title">Danh Mục </h4>
     <a class="btn btn-success" style="margin-bottom:10px;" href="{{ route('admin.categories.create') }}">ADD</a>
-
     <table class="table table-bordered">
         <thead>
             <tr>
@@ -31,7 +30,7 @@
                 <th scope="row">{{ $category->id }}</th>
                     <td><a href="{{ route('admin.categories.show', $category->id) }}">{{ $category->name }}</a></td>
                     <td>
-                    <form action="{{ route('admin.categories.edit', $category->id) }}">
+                    <form action="{{ route('admin.categories.edit', $category->id) } ">                                     
                             <button class= "btn btn-primary" type="submit">Edit</button>
                         </form>
                     </td>
@@ -47,5 +46,6 @@
             @endforeach
         </tbody>
     </table>
+    {{ $categories->links(); }}
 </div>
 @endsection

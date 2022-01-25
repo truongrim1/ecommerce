@@ -91,6 +91,7 @@
 
                             <!-- Add to Cart Form -->
                             <form class="cart clearfix" method="post" action="{{ route('product.order') }}">
+                                @csrf
                                 <div class="cart-btn d-flex mb-50">
                                     <p>Qty</p>
                                     <div class="quantity">
@@ -100,6 +101,7 @@
                                     </div>
                                 </div>
                                 <input type="hidden" name="id" value="{{ $product->id }}">
+                                <input type="hidden" name="name" value="{{ $product->name }}">
                                 <button type="submit" name="addtocart" value="5" class="btn amado-btn">Add to cart</button>
                             </form>
                         </div>
