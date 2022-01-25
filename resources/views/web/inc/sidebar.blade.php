@@ -4,7 +4,7 @@
         <li><a href="shop.php">Shop</a></li>
         <li><a href="product-details.php">Product</a></li>
         <li><a href="cart.php">Cart</a></li>
-        <li><a href="checkout.php">Checkout</a></li>
+        <li><a href="{{ route('orders.index') }}">Checkout</a></li>
     </ul>
 </nav>
 <!-- Button Group -->

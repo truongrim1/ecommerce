@@ -21,7 +21,7 @@
           <td scope="row"> {{ $orderdetail->quantity }} </td>
           <td scope="row"> {{ $orderdetail->id }} </td>
           <td>
-            <form action="{{ route( 'orderdetails.destroy', $orderdetail->id ) }}" method="post">
+            <form action="{{ route('admin.orderdetails.destroy', $orderdetail->id) }}" method="post">
                 {{ csrf_field() }}
                 {{ method_field('delete') }}
                 <button type="submit"> Xóa</button>
@@ -31,7 +31,7 @@
         @endforeach
     </tbody>
   </table><br>
-  <a href="{{ route('orders.index') }}" class="btn btn-primary" >Cancel</a>
+  <a href="{{ route('admin.orders.index') }}" class="btn btn-primary" >Cancel</a>
 </div>
 
 @endsection

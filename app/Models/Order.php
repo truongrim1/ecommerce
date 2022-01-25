@@ -9,7 +9,7 @@ class Order extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id', 'name', 'desc', 'status', 'customer_id'];
+    protected $fillable = ['id', 'name', 'desc', 'phone', 'address', 'status', 'customer_id'];
 
     protected $hidden = ['created_at', 'updated_at'];
 
