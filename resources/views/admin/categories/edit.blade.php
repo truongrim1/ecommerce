@@ -1,4 +1,3 @@
-
 @extends('admin.master')
 
 @section('title', 'Edit categories')
@@ -12,7 +11,7 @@
         border-color: red;
     }
 </style>
-<form action="{{ route('categories.update', $categories->id) }}" method="POST" >
+<form action="{{ route('admin.categories.update', $categories->id) }}" method="POST" >
     {{ csrf_field() }}
     {{ method_field('PUT') }}
     <div class="form-group {{ $errors->has('name') ? 'has-errors': '' }}">

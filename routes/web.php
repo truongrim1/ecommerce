@@ -4,14 +4,13 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\Admin\OrderController;
 use App\Http\Controllers\Admin\BrandController;
 use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\CustomerController;
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Admin\OrderDetailController;
-
-use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController as WebOrderController;
 use App\Http\Controllers\ProductController as WebProductController;
 
@@ -55,7 +54,7 @@ Auth::routes();
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
-Route::get('product-detail/{id}', [WebProductController::class, 'show'])->name('products.show');
+Route::get('product-detail/{slug}.html', [WebProductController::class, 'productDetail'])->name('product.detail');
 
 Route::get('orders', [WebOrderController::class, 'index'])->name('orders.index');
 

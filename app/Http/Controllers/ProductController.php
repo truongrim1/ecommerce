@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Product;
 
+use function PHPUnit\Framework\isEmpty;
+
 class ProductController extends Controller
 {
     /**
@@ -23,9 +25,11 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function productDetail($slug)
     {
-        $product = Product::find($id);
-        return view('web.product', array('product' => $product)); 
+        $arr = explode( '-', $slug);
+        $id = isEmpty($arr) ? intval($arr[count($arr) - 1]) : 0;
+        $product = Product::findOrFail($id);
+        return view('web.product', array('product' => $product));
     }
 }

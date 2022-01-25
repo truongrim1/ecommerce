@@ -9,13 +9,13 @@
     font-weight:  normal;
     line-height:  inherit;
   }
-   .has-error input{ 
+   .has-error input{
     border-color: red;
   }
-  
+
 </style>
 <div class="col-lg-4 form-create-app">
-<form action="{{ route('customers.store') }}" method="POST">
+<form action="{{ route('admin.customers.store') }}" method="POST">
     {{ csrf_field() }}
   <div class="mb-3 {{ $errors->has('fullName') ? 'has-error' : ''}}" >
     <label for="exampleInputEmail1" class="form-label">Fullname</label>
@@ -64,9 +64,9 @@
     <span>
     @endif
   </div>
-  
+
   <button type="submit" class="btn btn-primary">Submit</button>
-   <a  class="btn btn-primary" href= "{{ route('customers.index') }}"> Return Home</a>
+   <a  class="btn btn-primary" href= "{{ route('admin.customers.index') }}"> Return Home</a>
 </form>
 </div>
 

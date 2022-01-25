@@ -11,7 +11,7 @@
         border-color: red;
     }
 </style>
-<form action="{{ route('brands.update', $brand->id) }}" method="POST" >
+<form action="{{ route('admin.brands.update', $brand->id) }}" method="POST" >
     {{ csrf_field() }}
     <div class="form-group {{ $errors->has('name') ? 'has-errors': '' }}">
         <label for="name">Name</label>

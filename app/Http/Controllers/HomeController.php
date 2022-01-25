@@ -26,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $products = Product::with('brand', 'category')->get();
-        return view('web.home', array('products' => $products));
+        $data['products'] = Product::with('brand', 'category')->paginate(6);
+        return view('web.home', $data);
     }
 }

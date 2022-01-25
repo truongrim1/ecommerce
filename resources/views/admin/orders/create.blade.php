@@ -16,11 +16,11 @@
         <span> {{ $errors }} </span>
     @endif
     <h1>Add Product</h1> <br>
-    <form class="forms-sample" action="{{ route('orders.store') }}" method="post">
+    <form class="forms-sample" action="{{ route('admin.orders.store') }}" method="post">
         {{ csrf_field() }}
         <div class="form-group {{ $errors->has('txtname') ? 'has-errors': '' }}">
             <label for="namebrand">Tên người nhận </label>
-            <input type="text" class="form-control" id="namebrand" placeholder="Enter name" name="txtname" 
+            <input type="text" class="form-control" id="namebrand" placeholder="Enter name" name="txtname"
                 value="{{ old('txtname') }}">
             @if($errors->has('txtname'))
                 <span class="help-block">
@@ -53,7 +53,7 @@
         </select>
         </div>
         <button type="submit" class="btn btn-success mr-2" name="btnadd">Add</button>
-        <a href="{{ route('orders.index') }}" class="btn btn-light" >Cancel</a>
+        <a href="{{ route('admin.orders.index') }}" class="btn btn-light" >Cancel</a>
     </form>
 </div>
 

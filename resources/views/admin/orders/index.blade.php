@@ -34,7 +34,7 @@
         @foreach($orders as $order)
         <tr>
             <td scope="row"> {{ $order->id }} </td>
-            <td> <a href="{{ route('admin.orders.show', $order->id) }}"> {{ $order->name }} </a> </td> 
+            <td> <a href="{{ route('admin.orders.show', $order->id) }}"> {{ $order->name }} </a> </td>
             <!-- <td style="width: 100px"> {{ $order->desc }} </td> -->
             <td> {{ $order->status == 0 ? "chưa thanh toán" : "Đã thanh toán" }} </td>
             <td> {{ $order->customer->fullName }} </td>
@@ -51,7 +51,11 @@
                 <button type="submit">Cập nhật</button>
               </form>
 
+<<<<<<< HEAD
               <form action="{{ route('admin.orders.destroy', $order->id) }}" method="post" onsubmit="return confirm('Bạn có chắc muốn xoá hóa đơn')">
+=======
+              <form action="{{ route( 'admin.orders.destroy', $order->id ) }}" method="post">
+>>>>>>> 976302e (create product_web_ui)
                   {{ csrf_field() }}
                   {{ method_field('delete') }}
                   <button type="submit"> Xóa</button>

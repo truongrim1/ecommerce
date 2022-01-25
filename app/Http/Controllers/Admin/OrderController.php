@@ -100,6 +100,6 @@ class OrderController extends Controller
     public function destroy($id)
     {
         Order::destroy($id);
-        return redirect()->route('orders.index')->with('message', 'Xóa hóa đơn hành công');
+        return redirect()->route('admin.orders.index')->with('message', 'Xóa hóa đơn hành công');
     }
 }

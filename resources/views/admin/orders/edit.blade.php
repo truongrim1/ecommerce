@@ -17,19 +17,19 @@
     @endif
 
     <h1>update Product</h1> <br>
-    <form class="forms-sample" action="{{ route('orders.update', $order->id) }}" method="post">
+    <form class="forms-sample" action="{{ route('admin.orders.update', $order->id) }}" method="post">
     @method('PATCH')
         {{ csrf_field() }}
         <div class="form-group {{ $errors->has('txtname') ? 'has-errors': '' }}">
             <label for="namebrand">Tên người nhận </label>
-            <input type="text" class="form-control" id="namebrand" placeholder="Enter name" name="txtname" 
+            <input type="text" class="form-control" id="namebrand" placeholder="Enter name" name="txtname"
             @if(isset($errors))
                 value="{{ $order->name }}"
             @endif
             @if(!isset($errors))
                 value="{{ old('txtname') }}"
             @endif
-            >  
+            >
             @if($errors->has('txtname'))
                 <span class="help-block">
                     <strong>{{ $errors->first('txtname') }}</strong>
@@ -45,7 +45,7 @@
             @if(!isset($errors))
                 value="{{ old('txtnote') }}"
             @endif
-            >    
+            >
             @if($errors->has('txtnote'))
                 <span class="help-block">
                     <strong>{{ $errors->first('txtnote') }}</strong>
@@ -66,7 +66,7 @@
         </select>
         </div>
         <button type="submit" class="btn btn-success mr-2" name="btnupdate">update</button>
-        <a href="{{ route('orders.index') }}" class="btn btn-light" >Cancel</a>
+        <a href="{{ route('admin.orders.index') }}" class="btn btn-light" >Cancel</a>
     </form>
 </div>
 

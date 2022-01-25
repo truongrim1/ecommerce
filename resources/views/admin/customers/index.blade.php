@@ -34,16 +34,16 @@
         @foreach($customers as $customer)
             <tr>
                 <th scope="row">{{$customer->id}}</th>
-                <td><a href="{{ route('customers.show', $customer->id) }}"> {{ $customer->fullName }} </a></td>
+                <td><a href="{{ route('admin.customers.show', $customer->id) }}"> {{ $customer->fullName }} </a></td>
                 <td>{{ $customer->email }}</td>
                 <td>{{ $customer->pass }}</td>
                 <td>{{ $customer->address }}</td>
                 <td>{{ $customer->phone }}</td>
 
-                <td><a class="btn btn-primary" href="{{ route('customers.edit', $customer->id) }}"> Edit </a></td>
+                <td><a class="btn btn-primary" href="{{ route('admin.customers.edit', $customer->id) }}"> Edit </a></td>
 
                 <td>
-                    <form action="{{ route('customers.destroy', $customer->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa sản phẩm này không?')">
+                    <form action="{{ route('admin.customers.destroy', $customer->id) }}" method="POST" onsubmit="return confirm('Bạn có muốn xóa sản phẩm này không?')">
                         {{ csrf_field() }}
                         {{ method_field('delete') }}
                         <button class="btn btn-primary" type="submit">Delete</button>
